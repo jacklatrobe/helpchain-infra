@@ -1,0 +1,25 @@
+# HelpChain-Infra: configmap.yaml
+# Description: This file contains the Kubernetes Deployment configuration for the HelpChain application. It defines the desired state of the application, including the container image, replicas, and any additional configuration needed.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helpchain
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: helpchain
+  template:
+    metadata:
+      labels:
+        app: helpchain
+    spec:
+      containers:
+        - name: helpchain
+          image: <your-container-image>
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: helpchain-config

@@ -1,0 +1,10 @@
+# HelpChain-Infra: configmap.yaml
+# Description: This file defines Kubernetes ConfigMaps for managing application configuration data. It can include environment variables, properties files, or other configuration data required by the application.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: helpchain-config
+data:
+  # Add your configuration data here, e.g., environment variables, properties files, etc.
+  SOME_VARIABLE: "some-value"
