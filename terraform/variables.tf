@@ -18,19 +18,19 @@ variable "region" {
 variable "kubernetes_version" {
   description = "Kubernetes version for the cluster"
   type        = string
-  default     = "1.23.0"
+  default     = "1.26.3-do.0"
 }
 
 variable "worker_node_size" {
   description = "Size of the worker nodes"
   type        = string
-  default     = "s-2vcpu-4gb"
+  default     = "s-2vcpu-2gb"
 }
 
 variable "worker_node_count" {
   description = "Number of worker nodes in the initial node pool"
   type        = number
-  default     = 3
+  default     = 1
 }
 
 variable "additional_worker_node_count" {

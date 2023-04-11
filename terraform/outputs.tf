@@ -1,7 +1,7 @@
 # HelpChain-Infra: outputs.tf
 
 output "kubeconfig" {
-  value       = digitalocean_kubernetes_cluster.helpchain_cluster.kubeconfig
+  value       = digitalocean_kubernetes_cluster.helpchain_cluster.kube_config
   description = "Kubeconfig file content for the HelpChain Kubernetes cluster"
 }
 
