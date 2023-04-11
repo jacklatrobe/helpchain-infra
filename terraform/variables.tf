@@ -8,7 +8,7 @@ variable "do_token" {
 variable "project_name" {
   description = "Name of the Digital Ocean project"
   type        = string
-  default     = "Helpchain"
+  default     = "helpchain"
 }
 
 variable "region" {
