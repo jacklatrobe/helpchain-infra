@@ -26,19 +26,29 @@ The key resource types that these scripts deploy are:
 
 1. Navigate to the `terraform/` directory.
 2. Create a `terraform.tfvars` file containing the following variables:
+    ~~~
     do_token = "<your_digital_ocean_api_token>"
     project_name = "<desired_project_name>"
     region = "<preferred_region>"
+    ~~~
    Replace `<your_digital_ocean_api_token>`, `<desired_project_name>`, and `<preferred_region>` with your own values.
 3. Initialize the Terraform working directory:
+    ~~~
     terraform init
+    ~~~
    (Optional) If you want to use a remote backend for storing Terraform state files, configure the `backend.tf` file before running `terraform init`.
 4. Validate the Terraform configuration files:
+    ~~~
     terraform validate
+    ~~~
 5. Review the planned infrastructure changes:
+    ~~~
     terraform plan
+    ~~~
 6. Apply the Terraform configuration to create the resources:
+    ~~~
     terraform apply
+    ~~~
 Confirm the changes by typing `yes` when prompted.
 7. After the resources have been successfully created, Terraform will output information about the Kubernetes cluster, such as the cluster's kubeconfig file. Save the kubeconfig file locally and configure your `kubectl` to use it.
 
@@ -46,9 +56,13 @@ Confirm the changes by typing `yes` when prompted.
 To destroy the resources created by Terraform:
 1. Navigate to the `terraform/` directory.
 2. Run the following command:
+    ~~~
     terraform destroy
+    ~~~
    Confirm the destruction by typing `yes`
 
+## Next steps
+Deploy the helpchain-langchain application: https://github.com/jacklatrobe/helpchain-langchain
 ---
 
 For more information on working with Terraform or managing the HelpChain application, refer to the [Terraform documentation](https://developer.hashicorp.com/terraform/docs), the HelpChain main [README](https://github.com/jacklatrobe/helpchain-infra) or contact the Latrobe Consulting Group for advice or implementation guidance: https://latrobe.group/
