@@ -14,6 +14,7 @@ variable "project_name" {
 variable "region" {
   description = "Region where the Kubernetes cluster will be deployed"
   type        = string
+  default     = "nyc1"
 }
 
 variable "kubernetes_version" {
