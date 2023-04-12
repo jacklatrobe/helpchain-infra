@@ -27,18 +27,14 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
 
-    # Push S3 key to env variable for backend state
-    - name: Set S3 key environment variable
-      run: export AWS_ACCESS_KEY_ID=${{ secrets.S3_ACCESS_KEY_ID }}
-
-    # Push S3 secret to env variable for backend state
-    - name: Set S3 key environment variable
-      run: export AWS_SECRET_ACCESS_KEY=${{ secrets.S3_SECRET_ACCESS_KEY }}
-
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
       working-directory: ./terraform/
+      env:
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
+
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Format
@@ -55,9 +51,15 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false -var="do_token=${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}"
       working-directory: ./terraform/
+      env:
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
       run: terraform apply -auto-approve -input=false
       working-directory: ./terraform/
+      env:
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY_ID }}
