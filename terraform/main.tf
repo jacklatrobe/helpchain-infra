@@ -21,8 +21,8 @@ resource "digitalocean_kubernetes_cluster" "helpchain_cluster" {
   vpc_uuid      = digitalocean_vpc.helpchain_vpc.id
 
   maintenance_policy {
-    start_time  = "02:00"
-    day         = "sunday"
+    start_time = "02:00"
+    day        = "sunday"
   }
 
   node_pool {
