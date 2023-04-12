@@ -45,7 +45,7 @@ jobs:
     - name: tfsec action
       uses: aquasecurity/tfsec-action@v1.0.3
       with:
-        working-directory: ./terraform/
+        working_directory: ./terraform/
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
