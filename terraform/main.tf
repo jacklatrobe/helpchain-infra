@@ -37,7 +37,7 @@ resource "digitalocean_kubernetes_cluster" "helpchain_cluster" {
     size       = var.worker_node_size
   }
 
-  tags   = [digitalocean_tag.helpchain-tag.id]
+  tags = [digitalocean_tag.helpchain-tag.id]
 }
 
 data "digitalocean_kubernetes_cluster" "helpchain_cluster_data" {
