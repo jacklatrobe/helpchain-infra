@@ -2,7 +2,7 @@
 
 ## Digital Ocean Tag: To be applied to appropriate resources to indicate they belong to HelpChain
 resource "digitalocean_tag" "helpchain-tag" {
-  ServiceName = "HelpChain"
+  name = "HelpChain"
 }
 
 ## Digitial Ocean Virtual Private Network: To establish a secure network perimetre for the solution
