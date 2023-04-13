@@ -1,5 +1,10 @@
 # HelpChain-Infra: main.tf
 
+## Digital Ocean Tag: To be applied to appropriate resources to indicate they belong to HelpChain
+resource "digitalocean_tag" "helpchain-tag" {
+  ServiceName = "HelpChain"
+}
+
 ## Digitial Ocean Virtual Private Network: To establish a secure network perimetre for the solution
 resource "digitalocean_vpc" "helpchain_vpc" {
   name        = "helpchain-vpc"
@@ -7,7 +12,6 @@ resource "digitalocean_vpc" "helpchain_vpc" {
   region      = var.region
   ip_range    = "192.168.42.0/24"
 }
-
 
 ## Digital Ocean Kubernetes Cluster: A managed Kubernetes cluster that will host your application.
 ## https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/kubernetes_cluster
@@ -33,9 +37,7 @@ resource "digitalocean_kubernetes_cluster" "helpchain_cluster" {
     size       = var.worker_node_size
   }
 
-  tags = {
-    Service = "HelpChain"
-  }
+  tags   = [digitalocean_tag.helpchain-tag.id]
 }
 
 data "digitalocean_kubernetes_cluster" "helpchain_cluster_data" {
