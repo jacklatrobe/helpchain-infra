@@ -26,8 +26,21 @@ resource "digitalocean_kubernetes_cluster" "helpchain_cluster" {
   }
 
   node_pool {
-    name       = "worker-pool"
+    name       = "helpchain-pool"
+    auto_scale = true
+    min_nodes  = 1
+    max_nodes  = var.worker_node_max_count
     size       = var.worker_node_size
-    node_count = var.worker_node_count
+  }
+
+  tags = {
+    Service = "HelpChain"
   }
 }
+
+data "digitalocean_kubernetes_cluster" "helpchain_cluster_data" {
+  name = var.project_name
+}
+
+## TODO: Integrate with Terraform Kube Provider to further automate kube configuration at this point
+## https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs

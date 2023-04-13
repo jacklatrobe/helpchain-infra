@@ -29,14 +29,8 @@ variable "worker_node_size" {
   default     = "s-2vcpu-2gb"
 }
 
-variable "worker_node_count" {
-  description = "Number of worker nodes in the initial node pool"
+variable "worker_node_max_count" {
+  description = "Number of worker nodes that helpchain can scale up to - will always start at 1"
   type        = number
-  default     = 1
-}
-
-variable "additional_worker_node_count" {
-  description = "Number of worker nodes in the additional node pool"
-  type        = number
-  default     = 2
+  default     = 3
 }
