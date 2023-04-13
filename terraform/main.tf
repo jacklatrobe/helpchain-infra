@@ -40,9 +40,5 @@ resource "digitalocean_kubernetes_cluster" "helpchain_cluster" {
   tags = [digitalocean_tag.helpchain-tag.id]
 }
 
-data "digitalocean_kubernetes_cluster" "helpchain_cluster_data" {
-  name = var.project_name
-}
-
 ## TODO: Integrate with Terraform Kube Provider to further automate kube configuration at this point
 ## https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs
